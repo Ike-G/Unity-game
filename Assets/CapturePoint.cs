@@ -7,7 +7,7 @@ public class CapturePoint : Interactable
     public bool isCaptured = false;
     public float timeToCap = 10;
 
-    void Update(float timeToCap)
+    void Update()
     {
         if (playerInRange && timeToCap > 0)
         {
@@ -15,17 +15,13 @@ public class CapturePoint : Interactable
         }
         if (!playerInRange)
             timeToCap = 10;
-
-    }
-
-    public void Capping(float timeToCap)
-    {
-        if(timeToCap > 0)
+        if (timeToCap <= 0)
         {
-            isCaptured == true;
-            Debug.Log("Captured");
+            isCaptured = true;
         }
+
     }
+
 
 
 
