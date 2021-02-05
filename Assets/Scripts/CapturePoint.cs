@@ -15,15 +15,14 @@ public class CapturePoint : Interactable
         }
         if (!playerInRange)
             timeToCap = 10;
-
-    }
-
-    public void Capping(float timeToCap)
-    {
-        if(timeToCap > 0)
+        if (timeToCap <= 0)
         {
             isCaptured = true;
-            Debug.Log("Captured");
         }
+
     }
+
+
+
+
 }
