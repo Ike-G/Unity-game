@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public abstract class Shootable : MonoBehaviour 
 {
@@ -15,6 +16,10 @@ public abstract class Shootable : MonoBehaviour
         Debug.Log(health); 
         if (health <= 0) 
             Death(); 
+    }
+
+    public Vector2[] pathToDest(Vector2 dest) { 
+        throw new UnityException(); 
     }
 
     protected abstract void Death();
