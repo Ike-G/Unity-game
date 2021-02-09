@@ -8,6 +8,7 @@ public abstract class Shootable : MonoBehaviour
     // This class should be inherited by any member that can take damage. All specifics should be handled within the damaging object, this merely acts as an interface. 
     protected float maxHealth; 
     protected float health; 
+    protected List<Vector2> vertices; 
     public float getHealth { 
         get { return health; }
     }
@@ -19,6 +20,7 @@ public abstract class Shootable : MonoBehaviour
     }
 
     public Vector2[] pathToDest(Vector2 dest) { 
+        
         throw new UnityException(); 
     }
 

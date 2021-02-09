@@ -471,10 +471,10 @@ MonoBehaviour:
     type: 3}
   view: {fileID: 5149438164528650213}
   keyset: 71000000770000006500000072000000
-  fireballReq: 100
-  archerReq: 80
-  giantReq: 120
-  blockReq: 150
+  fireballReq: 120
+  archerReq: 150
+  giantReq: 180
+  blockReq: 200
   maxMana: 500
   manaGainRate: 50
   maxDashCD: 12
