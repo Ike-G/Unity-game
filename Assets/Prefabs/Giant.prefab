@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4297815719418344241}
   - component: {fileID: 9151297036541190843}
   - component: {fileID: 524593525216948709}
+  - component: {fileID: 2819963503877221660}
   m_Layer: 0
   m_Name: Giant
   m_TagString: Untagged
@@ -146,3 +147,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0efe5e5748d550f47923ee3176f69b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ptargetTag: Enemy
+  pviewRange: 10
+  pspeed: 0.05
+--- !u!114 &2819963503877221660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6461110229102346562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 1
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1

@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class ExplosionDamage : MonoBehaviour
 {
-
+    [SerializeField] private float baseDamage = 5; 
+    public float damageMod { get; set; } = 1; 
     // void FixedUpdate()
     // {
     //     for (int i = 0; i < precision; i++) {
@@ -24,6 +25,6 @@ public class ExplosionDamage : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col) {
         Shootable s = col.gameObject.GetComponent<Shootable>(); 
         if (s != null) 
-            s.takeDamage(10); 
+            s.takeDamage(baseDamage*damageMod); 
     }
 }

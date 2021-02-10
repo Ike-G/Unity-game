@@ -7,6 +7,9 @@ public class trajectory : MonoBehaviour
     [SerializeField] float speed; 
     [SerializeField] float activeTime; 
     [SerializeField] GameObject explosion; 
+    [SerializeField] float baseDamage = 50; 
+    public float damageMod { get; set; } = 1; 
+    private float explosionDamageMod; 
     private Rigidbody2D rb; 
     // Start is called before the first frame update
     void Start()
@@ -26,12 +29,13 @@ public class trajectory : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other) {
         Shootable s = other.gameObject.GetComponent<Shootable>();
         if (s != null) 
-            s.takeDamage(60);
+            s.takeDamage(baseDamage*damageMod);
         Explode();
     }
 
     private void Explode() {
         Destroy(gameObject, 0);
-        Instantiate(explosion, transform.position, Quaternion.identity);
+        GameObject e = Instantiate(explosion, transform.position, Quaternion.identity);
+        e.GetComponent<ExplosionDamage>().damageMod = damageMod; 
     }
 }

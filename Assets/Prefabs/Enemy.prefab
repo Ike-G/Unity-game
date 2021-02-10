@@ -50,10 +50,12 @@ MonoBehaviour:
   stoppingDistance: 6
   retreatDistance: 3
   findRange: 5
+  pMaxHealth: 50
   shotStartInterval: 3
   projectile: {fileID: 1322879864840416416, guid: 1b00e658e6c650c4e8a605d52b229ad6,
     type: 3}
   player: {fileID: 0}
+  dtext: {fileID: 5587081434924565564, guid: b273e2edacfa7d844b9acf6ecbd4f3d3, type: 3}
 --- !u!212 &1838106226863896097
 SpriteRenderer:
   m_ObjectHideFlags: 0

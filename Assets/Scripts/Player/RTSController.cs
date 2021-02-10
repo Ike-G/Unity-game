@@ -25,6 +25,7 @@ public class RTSController : MonoBehaviour
     [SerializeField] private float maxMana; 
     [SerializeField] private float manaGainRate; 
     [SerializeField] private float maxDashCD; 
+    [SerializeField] private float maxAttackCD; 
     
     private Ability[] abilitySet; 
     private Vector3[] abilityPos; 
@@ -33,6 +34,7 @@ public class RTSController : MonoBehaviour
     private Rigidbody2D kingRB;
     private float mana; 
     private float dashCD; 
+    private float attackCD; 
     public int getMana {
         get { return Mathf.FloorToInt(mana); }
     }
@@ -53,7 +55,7 @@ public class RTSController : MonoBehaviour
         abilityPos = new Vector3[] { Vector3.zero, Vector3.zero, Vector3.zero, Vector3.zero };
         abilityUI = new List<GameObject>[] { new List<GameObject>(), new List<GameObject>(), new List<GameObject>(), new List<GameObject>() };
         mana = maxMana; 
-        dashCD = 0; 
+        dashCD = 0;  
     }
 
     // Update is called once per frame
@@ -108,7 +110,8 @@ public class RTSController : MonoBehaviour
         if (Input.GetKeyUp(keyset[keyInd])) {
             if (mana >= fireballReq) {
                 Vector2 dp = view.ScreenToWorldPoint(Input.mousePosition) - abilityPos[keyInd];
-                Instantiate(fireball, abilityPos[keyInd], Quaternion.Euler(0, 0, 360f*(float)Math.Atan2(-(double)dp.x, (double)dp.y) / (2*(float)Math.PI)));
+                GameObject f = Instantiate(fireball, abilityPos[keyInd], Quaternion.Euler(0, 0, 360f*(float)Math.Atan2(-(double)dp.x, (double)dp.y) / (2*(float)Math.PI)));
+                f.GetComponent<trajectory>().damageMod = kingMethods.damageMod; 
                 mana -= fireballReq;
             }
             foreach (GameObject g in abilityUI[keyInd]) {
@@ -167,9 +170,12 @@ public class RTSController : MonoBehaviour
             List<Collider2D> c = new List<Collider2D>();
             int n = Physics2D.OverlapCircle(pos, 0.2f, new ContactFilter2D().NoFilter(), c);
             if (n == 0 || !c[0].gameObject.GetComponent<Rigidbody2D>().isKinematic) {
-                Instantiate(block, pos, Quaternion.identity);
+                GameObject b = Instantiate(block, pos, Quaternion.identity);
                 mana -= blockReq; 
+                Bounds blockBounds = b.GetComponent<BoxCollider2D>().bounds; 
+                AstarPath.active.UpdateGraphs(blockBounds);
             }
+
         }
     }
 }

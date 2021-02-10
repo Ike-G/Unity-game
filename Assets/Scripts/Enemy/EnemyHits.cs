@@ -11,6 +11,7 @@ public class EnemyHits : Shootable
     [SerializeField] float dashSpeed; 
     [SerializeField] GameObject explosion;
 	[SerializeField] private float pMaxHealth;
+    [SerializeField] private GameObject dtext; 
     private Rigidbody2D rb;
     private bool detected;
     private bool primed;
@@ -24,6 +25,7 @@ public class EnemyHits : Shootable
         primed = true;
 		maxHealth = pMaxHealth; 
         health = maxHealth; 
+        damageText = dtext; 
     }
 
     // Update is called once per frame

@@ -78,7 +78,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 'test
+
+'
 --- !u!114 &319681825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,6 +480,7 @@ MonoBehaviour:
   maxMana: 500
   manaGainRate: 50
   maxDashCD: 12
+  maxAttackCD: 0
 --- !u!1 &5149438164104194256
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,6 +494,7 @@ GameObject:
   - component: {fileID: 5149438164104194263}
   - component: {fileID: 5149438164104194262}
   - component: {fileID: 5149438164104194257}
+  - component: {fileID: 4680128}
   m_Layer: 0
   m_Name: King
   m_TagString: Player
@@ -632,6 +636,36 @@ MonoBehaviour:
   - {fileID: 2806681719108146559, guid: 113e7303815d06b49a6852ec469c6332, type: 3}
   pMaxHealth: 500
   dashSpeed: 1
+  dashDamage: 20
+  dtext: {fileID: 5587081434924565564, guid: b273e2edacfa7d844b9acf6ecbd4f3d3, type: 3}
+--- !u!114 &4680128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5149438164104194256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
 --- !u!1 &5149438164528650214
 GameObject:
   m_ObjectHideFlags: 0

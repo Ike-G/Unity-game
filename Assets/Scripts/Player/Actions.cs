@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding; 
+using UnityEngine.UI; 
 
 public class Actions : Shootable
 {
@@ -10,6 +11,8 @@ public class Actions : Shootable
     [SerializeField] private GameObject[] respawnList; 
     [SerializeField] private float pMaxHealth; 
     [SerializeField] private float dashSpeed; 
+    [SerializeField] private float dashDamage; 
+    [SerializeField] private GameObject dtext; 
     private Transform t;
     private Vector3 intention; 
     private Vector2[] movements; 
@@ -20,8 +23,9 @@ public class Actions : Shootable
     private bool followingPath = false; 
     private Path path; 
     int currentWaypoint = 0; 
-    float nextWaypointDistance = 3f;
     Seeker seeker; 
+    private bool dashing = false;
+    public float damageMod { get; set; } = 1; 
 
     // Start is called before the first frame update
     private void Start()
@@ -33,6 +37,7 @@ public class Actions : Shootable
         maxHealth = pMaxHealth; 
         health = maxHealth; 
         seeker = GetComponent<Seeker>();
+        damageText = dtext; 
     }
 
     private void FixedUpdate()
@@ -45,7 +50,7 @@ public class Actions : Shootable
         if (moveIndex < movements.Length && !followingPath) {
             // rb.AddForce(movements[moveIndex]);
             rb.velocity = 50*movements[moveIndex];
-            Debug.Log(rb.velocity);
+            // Debug.Log(rb.velocity);
             // t.Translate(movements[moveIndex]);
             moveIndex++;
         } else if (followingPath) { 
@@ -53,26 +58,27 @@ public class Actions : Shootable
                 complete = true; 
                 rb.velocity = Vector2.zero;
             } else { 
-                rb.MovePosition(((Vector2)path.vectorPath[currentWaypoint] - rb.position) * speed * 0.5f + rb.position);
-                if (Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]) < nextWaypointDistance ) 
+                rb.velocity = ((Vector2)path.vectorPath[currentWaypoint] - rb.position) / Vector2.Distance((Vector2)path.vectorPath[currentWaypoint], rb.position) * speed * 50;
+                if (Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]) < 0.5f ) 
                     currentWaypoint++; 
             }
         } else {
             rb.velocity = Vector2.zero; 
             moveIndex = 0; 
             complete = true; 
+            dashing = false;
         }
     }
 
-    public void setIntent(Vector2 intent, bool dashing = false) {
+    public void setIntent(Vector2 intent, bool dash = false) {
         // Determine the sequence of movements 
-        float ts = dashing ? dashSpeed : speed; 
+        float ts = dash ? dashSpeed : speed; 
         float m = (intent-rb.position).magnitude;
-        int ti = dashing ? 5 : (int)(m/ts)+1; // Gets the number of iterations (final iteration may be 0,0)
+        int ti = dash ? 5 : (int)(m/ts)+1; // Gets the number of iterations (final iteration may be 0,0)
         Vector2 s = (intent - rb.position) / m; // Unit direction (s.magnitude = 1)
         // movements = new List<Vector2>(ti); 
         movements = new Vector2[ti]; 
-        movements[ti-1] = dashing? Vector2.zero : ts*(m/ts-(ti-1))*s;
+        movements[ti-1] = dash? Vector2.zero : ts*(m/ts-(ti-1))*s;
         for (int i = 0; i < ti-1; i++) {
             movements[i] = s*ts;
         }
@@ -80,6 +86,7 @@ public class Actions : Shootable
         complete = false; 
         intention = intent; 
         followingPath = false; 
+        dashing = dash; 
     }
 
     override protected void Death() { 
@@ -89,8 +96,11 @@ public class Actions : Shootable
     }
 
     void OnCollisionEnter2D(Collision2D collision) { 
-        if (collision.gameObject.GetComponent<Rigidbody2D>().isKinematic) {
+        if (!followingPath && collision.gameObject.GetComponent<Rigidbody2D>().isKinematic) {
             seeker.StartPath(rb.position, intention, OnPathComplete); 
+            dashing = false; 
+        } else if (dashing) { 
+            collision.gameObject.GetComponent<Shootable>().takeDamage(dashDamage);
         }
     }
 
@@ -100,5 +110,22 @@ public class Actions : Shootable
             currentWaypoint = 0; 
             followingPath = true; 
         }
+    }
+
+    public void buffHealth(float factor) { 
+        maxHealth *= factor; 
+        health *= factor; 
+    }
+
+    public void Heal(float value) {
+        health = Mathf.Min(health + value, maxHealth);
+    }
+
+    public void buffSpeed(float factor) { 
+        speed *= factor; 
+    }
+
+    public void buffDamage(float increment) {
+        damageMod += increment; 
     }
 }

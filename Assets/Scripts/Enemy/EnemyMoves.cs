@@ -13,6 +13,7 @@ public class EnemyMoves : Shootable
     [SerializeField] float shotStartInterval;
     [SerializeField] GameObject projectile;
     [SerializeField] Transform player;
+	[SerializeField] GameObject dtext; 
     private bool detected;
 
     void Start()
@@ -24,6 +25,8 @@ public class EnemyMoves : Shootable
         maxHealth = pMaxHealth; 
         
         health = maxHealth; 
+
+		damageText = dtext; 
     }
 
     // Update is called once per frame
