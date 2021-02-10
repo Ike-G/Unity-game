@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
+using Pathfinding;
 
 public abstract class Shootable : MonoBehaviour 
 {
     // This class should be inherited by any member that can take damage. All specifics should be handled within the damaging object, this merely acts as an interface. 
     protected float maxHealth; 
     protected float health; 
-    protected List<Vector2> vertices; 
+    // protected float speed; 
+    
     public float getHealth { 
         get { return health; }
     }
@@ -18,11 +19,5 @@ public abstract class Shootable : MonoBehaviour
         if (health <= 0) 
             Death(); 
     }
-
-    public Vector2[] pathToDest(Vector2 dest) { 
-        
-        throw new UnityException(); 
-    }
-
     protected abstract void Death();
 }

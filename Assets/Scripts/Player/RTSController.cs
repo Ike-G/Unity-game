@@ -66,7 +66,7 @@ public class RTSController : MonoBehaviour
         if (Input.GetMouseButtonDown(1)) {
             Vector2 intent = (Vector2)view.ScreenToWorldPoint(Input.mousePosition); 
             Instantiate(pathPointer, new Vector3(intent.x, intent.y, 0), Quaternion.identity);
-            kingMethods.setIntent(intent);
+            kingMethods.setIntent(intent, false);
         }
 
         if (Input.GetKey(KeyCode.Space)) {

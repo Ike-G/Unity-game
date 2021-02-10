@@ -627,7 +627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {x: 0, y: 0, z: 0}
-  speed: 0.2
+  speed: 0.3
   respawnList:
   - {fileID: 2806681719108146559, guid: 113e7303815d06b49a6852ec469c6332, type: 3}
   pMaxHealth: 500
