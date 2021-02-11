@@ -1,7 +1,12 @@
 fileFormatVersion: 2
-guid: 70367c50a14c135428d6c543250850c4
+<<<<<<< HEAD:Assets/Scripts/Enemy.meta
+guid: 951e97ad65354fb4b941904a59662f7d
 folderAsset: yes
 DefaultImporter:
+=======
+guid: ed0955500b68af748b319bf163111996
+PrefabImporter:
+>>>>>>> d4667664427c8b75b284a0acca35ff006232ab4e:Assets/No hit box.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

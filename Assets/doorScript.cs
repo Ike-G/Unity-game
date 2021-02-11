@@ -13,8 +13,8 @@ public class doorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if (isCaptured)
-        //     (gameObject.GetComponent(typeof(Collider)) as Collider).isTrigger = true;
+        //if (isCaptured)
+            //(gameObject.GetComponent(typeof(Collider)) as Collider).isTrigger = true;
 
 
     }
