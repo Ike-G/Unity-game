@@ -148,6 +148,7 @@ public class RTSController : MonoBehaviour
                 pos = new Vector3((float)Math.Floor(pos.x)+0.5f, (float)Math.Floor(pos.y)+0.5f, 0); 
                 Unit s = abilityUI[keyInd][0].GetComponent<Unit>();
                 s.initialise();
+                s.damageMod = kingMethods.damageMod; 
                 mana -= manaReq;
             } else {
                 Destroy(abilityUI[keyInd][0]);
@@ -177,5 +178,10 @@ public class RTSController : MonoBehaviour
             }
 
         }
+    }
+
+    public void buffMana(float addition) { 
+        maxMana += addition; 
+        mana += addition; 
     }
 }

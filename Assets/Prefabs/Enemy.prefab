@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1838106226863896097}
   - component: {fileID: 1838106226863896100}
   - component: {fileID: 1838106226863896099}
+  - component: {fileID: 1775774600276211629}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -46,15 +47,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1231cd99082ecac4aba833cff7ca8f87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  stoppingDistance: 6
-  retreatDistance: 8
-  findRange: 5
-  pMaxHealth: 50
+  speed: 0.1
+  findRange: 30
+  pMaxHealth: 200
   shotStartInterval: 3
   projectile: {fileID: 1322879864840416416, guid: 1b00e658e6c650c4e8a605d52b229ad6,
     type: 3}
   player: {fileID: 0}
+  viewRange: 30
+  radius: 5
+  attackRange: 8
   dtext: {fileID: 5587081434924565564, guid: b273e2edacfa7d844b9acf6ecbd4f3d3, type: 3}
 --- !u!212 &1838106226863896097
 SpriteRenderer:
@@ -161,3 +163,31 @@ PolygonCollider2D:
       - {x: 0.099999994, y: -0.074999996}
       - {x: 0.099999994, y: 0.055}
       - {x: 0.049999997, y: 0.099999994}
+--- !u!114 &1775774600276211629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838106226863896111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1

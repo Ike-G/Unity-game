@@ -19,6 +19,7 @@ public abstract class Unit : Shootable
     protected float radius; 
     protected float speed; 
     protected Rigidbody2D rb;
+    public float damageMod { get; set; }
 
     public abstract void initialise();
     protected override void Death() { 

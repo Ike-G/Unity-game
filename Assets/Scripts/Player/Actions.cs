@@ -26,6 +26,7 @@ public class Actions : Shootable
     Seeker seeker; 
     private bool dashing = false;
     public float damageMod { get; set; } = 1; 
+    private RTSController rc; 
 
     // Start is called before the first frame update
     private void Start()
@@ -38,6 +39,7 @@ public class Actions : Shootable
         health = maxHealth; 
         seeker = GetComponent<Seeker>();
         damageText = dtext; 
+        rc = gameObject.GetComponentInParent<RTSController>();
     }
 
     private void FixedUpdate()
@@ -100,7 +102,7 @@ public class Actions : Shootable
             seeker.StartPath(rb.position, intention, OnPathComplete); 
             dashing = false; 
         } else if (dashing) { 
-            collision.gameObject.GetComponent<Shootable>().takeDamage(dashDamage);
+            collision.gameObject.GetComponent<Shootable>().takeDamage(dashDamage*damageMod);
         }
     }
 
@@ -112,9 +114,9 @@ public class Actions : Shootable
         }
     }
 
-    public void buffHealth(float factor) { 
-        maxHealth *= factor; 
-        health *= factor; 
+    public void buffHealth(float addition) { 
+        maxHealth += addition; 
+        health += addition; 
     }
 
     public void Heal(float value) {
@@ -123,9 +125,14 @@ public class Actions : Shootable
 
     public void buffSpeed(float factor) { 
         speed *= factor; 
+        dashSpeed *= factor; 
     }
 
     public void buffDamage(float increment) {
         damageMod += increment; 
+    }
+
+    public void buffMana(float addition) { 
+        rc.buffMana(addition);
     }
 }

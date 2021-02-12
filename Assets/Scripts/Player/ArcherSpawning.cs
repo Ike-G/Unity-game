@@ -34,6 +34,7 @@ public class ArcherSpawning : Unit
         }
         foreach (archerBehaviour s in scripts) {
             s.initialise();
+            s.damageMod = damageMod;
             s.setRadius = pradius; 
             s.setSpeed = pspeed; 
             s.setTargetTag = ptargetTag; 

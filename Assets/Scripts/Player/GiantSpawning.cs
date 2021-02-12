@@ -69,7 +69,7 @@ public class GiantSpawning : Unit
 
     void attackTarget() { 
         if (Vector2.Distance(target.transform.position, transform.position) < attackRange) {
-            target.GetComponent<Shootable>().takeDamage(attackDamage); 
+            target.GetComponent<Shootable>().takeDamage(attackDamage*damageMod); 
         }
     }
 }

@@ -9,7 +9,6 @@ public class archerBehaviour : Unit
     public float setViewRange { set { viewRange = value; }}
     public float setSpeed { set { speed = value; }}
     public float setRadius { set { radius = value; }}
-    public float damageMod { get; set; } = 1; 
     [SerializeField] GameObject arrow; 
     [SerializeField] float arrowCD; 
     bool shooting = false; 
