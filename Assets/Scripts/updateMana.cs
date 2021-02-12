@@ -10,7 +10,7 @@ public class updateMana : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerScript = transform.parent.parent.GetComponentInChildren<RTSController>();
+        playerScript = transform.parent.parent.parent.GetComponentInChildren<RTSController>();
         manaText = gameObject.GetComponent<Text>(); 
     }
 

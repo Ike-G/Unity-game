@@ -67,7 +67,7 @@ public class RTSController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1)) {
             Vector2 intent = (Vector2)view.ScreenToWorldPoint(Input.mousePosition); 
-            Instantiate(pathPointer, new Vector3(intent.x, intent.y, 0), Quaternion.identity);
+            Instantiate(pathPointer, new Vector3(intent.x, intent.y, -1), Quaternion.identity);
             kingMethods.setIntent(intent, false);
         }
 
@@ -92,7 +92,7 @@ public class RTSController : MonoBehaviour
     void Fireball(int keyInd) {
         if (Input.GetKeyDown(keyset[keyInd])) {
             Vector2 pos = view.ScreenToWorldPoint(Input.mousePosition);
-            abilityPos[keyInd] = new Vector3(pos.x, pos.y, 0);
+            abilityPos[keyInd] = new Vector3(pos.x, pos.y, -1);
             GameObject tc = Instantiate(aimIndicator, abilityPos[keyInd], Quaternion.identity);
             GameObject ta = Instantiate(arrow, abilityPos[keyInd], Quaternion.identity);
             abilityUI[keyInd] = new List<GameObject>() { tc, ta };
@@ -124,14 +124,14 @@ public class RTSController : MonoBehaviour
     void unitSpawning(int keyInd, GameObject g, float manaReq) {
         if (Input.GetKeyDown(keyset[keyInd])) {
             abilityPos[keyInd] = view.ScreenToWorldPoint(Input.mousePosition);
-            abilityPos[keyInd] = new Vector3((float)Math.Floor(abilityPos[keyInd].x)+0.5f, (float)Math.Floor(abilityPos[keyInd].y)+0.5f, 0);
+            abilityPos[keyInd] = new Vector3((float)Math.Floor(abilityPos[keyInd].x)+0.5f, (float)Math.Floor(abilityPos[keyInd].y)+0.5f, -1);
             GameObject a = Instantiate(g, abilityPos[keyInd], Quaternion.identity);
             GameObject b = Instantiate(highlightSquare, abilityPos[keyInd], Quaternion.identity);
             abilityUI[keyInd] = new List<GameObject>() { a, b };
 
         } else if (Input.GetKey(keyset[keyInd])) {
             Vector3 pos = view.ScreenToWorldPoint(Input.mousePosition); // Get current mouse position 
-            pos = new Vector3((float)Math.Floor(pos.x)+0.5f, (float)Math.Floor(pos.y)+0.5f, 0); 
+            pos = new Vector3((float)Math.Floor(pos.x)+0.5f, (float)Math.Floor(pos.y)+0.5f, -1); 
             if (pos != abilityPos[keyInd]) // Check that the position has changed and it is now only a tile which isn't an obstacle
             {
                 Destroy(abilityUI[keyInd][1]);
@@ -145,7 +145,7 @@ public class RTSController : MonoBehaviour
         {
             if (mana >= manaReq) {
                 Vector3 pos = view.ScreenToWorldPoint(Input.mousePosition); // Get current mouse position 
-                pos = new Vector3((float)Math.Floor(pos.x)+0.5f, (float)Math.Floor(pos.y)+0.5f, 0); 
+                pos = new Vector3((float)Math.Floor(pos.x)+0.5f, (float)Math.Floor(pos.y)+0.5f, -1); 
                 Unit s = abilityUI[keyInd][0].GetComponent<Unit>();
                 s.initialise();
                 s.damageMod = kingMethods.damageMod; 
@@ -167,7 +167,7 @@ public class RTSController : MonoBehaviour
     void Block(int keyInd) {
         if (Input.GetKey(keyset[keyInd]) && mana >= blockReq) {
             Vector3 pos = view.ScreenToWorldPoint(Input.mousePosition);
-            pos = new Vector3((float)Math.Floor(pos.x)+0.5f, (float)Math.Floor(pos.y)+0.5f, 0); 
+            pos = new Vector3((float)Math.Floor(pos.x)+0.5f, (float)Math.Floor(pos.y)+0.5f, -1); 
             List<Collider2D> c = new List<Collider2D>();
             int n = Physics2D.OverlapCircle(pos, 0.2f, new ContactFilter2D().NoFilter(), c);
             if (n == 0 || !c[0].gameObject.GetComponent<Rigidbody2D>().isKinematic) {

@@ -14,15 +14,17 @@ public class CapturePoint : Interactable
             timeToCap -= Time.deltaTime;
         }
         if (!playerInRange)
+        {
             timeToCap = 10;
+        }
+
         if (timeToCap <= 0)
         {
             isCaptured = true;
+            GetComponent<PolygonCollider2D>().enabled = false;
         }
 
+
     }
-
-
-
 
 }

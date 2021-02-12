@@ -1,0 +1,28 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class doorScript : Interactable
+{
+    public CapturePoint isCaptured;
+    void Start()
+    {
+
+
+    }
+
+
+    void Update()
+    {
+<<<<<<< HEAD
+        //if (isCaptured)
+            //(gameObject.GetComponent(typeof(Collider)) as Collider).isTrigger = true;
+=======
+    }
+>>>>>>> d6f7eac6b48f2eb1537380bc39c74ea77b2698e3
+
+    public void Door(bool isCaptured)
+    {
+
+    }
+}

@@ -152,8 +152,8 @@ MonoBehaviour:
   pspeed: 0.05
   pradius: 1
   attackRange: 2
-  pMaxHealth: 500
-  attackDamage: 50
+  pMaxHealth: 2000
+  attackDamage: 200
 --- !u!114 &2819963503877221660
 MonoBehaviour:
   m_ObjectHideFlags: 0

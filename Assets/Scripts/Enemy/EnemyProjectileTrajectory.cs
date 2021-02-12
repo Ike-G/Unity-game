@@ -37,7 +37,7 @@ public class EnemyProjectileTrajectory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
  
         
         if (transform.position.x == player.position.x && transform.position.y == player.position.y)
@@ -57,7 +57,7 @@ public class EnemyProjectileTrajectory : MonoBehaviour
         {
             Shootable ep = other.gameObject.GetComponent<Shootable>();
             if (ep != null) 
-                ep.takeDamage(60);
+                ep.takeDamage(30);
             Explode();
         }
     }

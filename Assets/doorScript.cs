@@ -2,20 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class doorScript : MonoBehaviour
+public class doorScript : Interactable
 {
-    // Start is called before the first frame update
+    public CapturePoint isCaptured;
     void Start()
     {
-        
+
+
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        //if (isCaptured)
-            //(gameObject.GetComponent(typeof(Collider)) as Collider).isTrigger = true;
+    }
 
+    public void Door(bool isCaptured)
+    {
 
     }
 }
