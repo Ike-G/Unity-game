@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2819963503877221660}
   m_Layer: 0
   m_Name: Giant
-  m_TagString: Untagged
+  m_TagString: Friendly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,6 +150,10 @@ MonoBehaviour:
   ptargetTag: Enemy
   pviewRange: 10
   pspeed: 0.05
+  pradius: 1
+  attackRange: 2
+  pMaxHealth: 500
+  attackDamage: 50
 --- !u!114 &2819963503877221660
 MonoBehaviour:
   m_ObjectHideFlags: 0

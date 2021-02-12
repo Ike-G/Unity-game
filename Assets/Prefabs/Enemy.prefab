@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   stoppingDistance: 6
-  retreatDistance: 3
+  retreatDistance: 8
   findRange: 5
   pMaxHealth: 50
   shotStartInterval: 3

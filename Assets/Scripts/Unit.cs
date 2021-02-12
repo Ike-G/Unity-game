@@ -4,7 +4,7 @@ using UnityEngine;
 using Pathfinding; 
 using System; 
 
-public abstract class Unit : MonoBehaviour
+public abstract class Unit : Shootable
 {
     // This refers to anything which the player may place down that will remain present
     protected float viewRange; 
@@ -15,26 +15,29 @@ public abstract class Unit : MonoBehaviour
     protected Seeker seeker; 
     protected Path path; 
     protected bool reachedEndOfPath = false; 
-    protected float nextWaypointDistance = 3f;
     protected int currentWaypoint; 
+    protected float radius; 
     protected float speed; 
     protected Rigidbody2D rb;
 
     public abstract void initialise();
+    protected override void Death() { 
+
+    } 
     protected GameObject getTarget() { 
         GameObject target = null; 
-        RaycastHit2D hit; 
+        // RaycastHit2D hit; 
         float minDist = float.MaxValue; 
-        for (float i = 0; i < 2*Mathf.PI; i+=Mathf.PI/6) {
-            hit = Physics2D.Raycast(transform.position, viewRange * new Vector2(Mathf.Cos(i), Mathf.Sin(i))); 
-            try {
-                float dist = Vector2.Distance(transform.position, hit.collider.transform.position);
-                if (hit.collider.tag == targetTag && dist < minDist) {
-                    dist = minDist; 
-                    target = hit.collider.gameObject;  
-                }
-            } catch (Exception) {}
+        List<Collider2D> potentialTargets = new List<Collider2D>(); 
+        Physics2D.OverlapCircle(transform.position, viewRange, new ContactFilter2D().NoFilter(), potentialTargets);
+        foreach (Collider2D c in potentialTargets) {
+            float dist = Vector2.Distance(transform.position, c.transform.position);
+            if (c.CompareTag(targetTag) && dist < minDist) {
+                dist = minDist; 
+                target = c.gameObject; 
+            }
         }
+        Debug.Log($"Got target at {target.transform.position}");
         return target; 
     }
 
@@ -43,25 +46,14 @@ public abstract class Unit : MonoBehaviour
         if (initialised) { 
             if (checkCooldown == 0) {
                 target = getTarget(); 
-                Debug.Log($"enemy location: {target.transform.position}");
-                seeker.StartPath(transform.position, target.transform.position, OnPathComplete);
+                // Debug.Log($"enemy location: {target.transform.position}");
+                if (target != null) 
+                    seeker.StartPath(transform.position, target.transform.position, OnPathComplete);
                 checkCooldown = 1f; 
             }
             if (path != null) {
-                // if (currentWaypoint >= path.vectorPath.Count) 
-                //     reachedEndOfPath = true; 
-                // else {
-                //     Vector2 direction = (path.vectorPath[currentWaypoint] - transform.position).normalized;
-                //     Vector2 force = direction * speed * Time.deltaTime; 
-                //     rb.AddForce(force); 
-                //     float distance = Vector2.Distance(transform.position, path.vectorPath[currentWaypoint]);
-
-                //     if (distance < nextWaypointDistance) {
-                //         currentWaypoint++; 
-                //     }
-                // }
-                if (currentWaypoint >= path.vectorPath.Count) {
-                    reachedEndOfPath = true; 
+                if (currentWaypoint >= path.vectorPath.Count || Vector2.Distance(transform.position, target.transform.position) < radius) {
+                    // reachedEndOfPath = true; 
                     rb.velocity = Vector2.zero;
                 } else { 
                     rb.velocity = ((Vector2)path.vectorPath[currentWaypoint] - rb.position) / Vector2.Distance((Vector2)path.vectorPath[currentWaypoint], rb.position) * speed * 50;

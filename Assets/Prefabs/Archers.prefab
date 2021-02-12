@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 6819105343534167431}
   - component: {fileID: 4420145837078670561}
   - component: {fileID: 5147172005821710243}
+  - component: {fileID: 2672051915526335574}
+  - component: {fileID: 4903089472758130687}
   m_Layer: 0
   m_Name: ArcherUnit (2)
-  m_TagString: Untagged
+  m_TagString: Friendly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,6 +135,48 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &2672051915526335574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39246890259461054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 1
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
+--- !u!114 &4903089472758130687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39246890259461054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55068dc4108b0aa468878d5ab05c7ef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrow: {fileID: 4379686160348179976, guid: bc1ac8d3c103029428c2eaf548a9ad40, type: 3}
+  arrowCD: 2
 --- !u!1 &2412060760257998207
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,9 +189,11 @@ GameObject:
   - component: {fileID: 6026127489887791576}
   - component: {fileID: 6092262093044988534}
   - component: {fileID: 2963975088457591698}
+  - component: {fileID: 1175917003872677699}
+  - component: {fileID: 5856952807868211387}
   m_Layer: 0
   m_Name: ArcherUnit (1)
-  m_TagString: Untagged
+  m_TagString: Friendly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -266,6 +312,48 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1175917003872677699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2412060760257998207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 1
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
+--- !u!114 &5856952807868211387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2412060760257998207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55068dc4108b0aa468878d5ab05c7ef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrow: {fileID: 4379686160348179976, guid: bc1ac8d3c103029428c2eaf548a9ad40, type: 3}
+  arrowCD: 2
 --- !u!1 &5218837008174833294
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,9 +367,10 @@ GameObject:
   - component: {fileID: 4082641496333871018}
   - component: {fileID: 7758568038435348347}
   - component: {fileID: 4316583382734760909}
+  - component: {fileID: 2556219511955583089}
   m_Layer: 0
   m_Name: ArcherUnit
-  m_TagString: Untagged
+  m_TagString: Friendly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -412,6 +501,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55068dc4108b0aa468878d5ab05c7ef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  arrow: {fileID: 4379686160348179976, guid: bc1ac8d3c103029428c2eaf548a9ad40, type: 3}
+  arrowCD: 2
+--- !u!114 &2556219511955583089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5218837008174833294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 1
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
 --- !u!1 &6990292769359313458
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,7 +543,7 @@ GameObject:
   - component: {fileID: 8491321975597881145}
   m_Layer: 0
   m_Name: Archers
-  m_TagString: Untagged
+  m_TagString: Friendly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -458,3 +577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 773580c44d3a41043b1674005522150d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ptargetTag: Enemy
+  pviewRange: 20
+  pspeed: 0.15
+  pradius: 10

@@ -12,6 +12,11 @@ public class GiantSpawning : Unit
     [SerializeField] string ptargetTag; 
     [SerializeField] float pviewRange = 10; 
     [SerializeField] float pspeed = 10; 
+    [SerializeField] float pradius; 
+    [SerializeField] float attackRange; 
+    [SerializeField] float pMaxHealth; 
+    [SerializeField] float attackDamage; 
+    float attackCD = 0; 
     
     // Start is called before the first frame update
     void Start()
@@ -25,10 +30,21 @@ public class GiantSpawning : Unit
         targetTag = ptargetTag; 
         viewRange = pviewRange;
         speed = pspeed;
+        radius = pradius; 
+        maxHealth = pMaxHealth; 
+    }
+
+    protected override void Death() {
+        Destroy(gameObject, 0); 
     }
 
     void Update() { 
         pathing(); 
+        attackCD = Mathf.Max(0, attackCD - Time.deltaTime); 
+        if (attackCD <= 0) {
+            attackTarget();
+            attackCD = 1; 
+        }
     }
 
     public override void initialise() {
@@ -49,5 +65,11 @@ public class GiantSpawning : Unit
 
     void OnTriggerEnter2D() {
         inBlock = false; 
+    }
+
+    void attackTarget() { 
+        if (Vector2.Distance(target.transform.position, transform.position) < attackRange) {
+            target.GetComponent<Shootable>().takeDamage(attackDamage); 
+        }
     }
 }
